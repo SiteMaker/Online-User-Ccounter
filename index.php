@@ -7,7 +7,8 @@
 
   if($online){
     // Update
-
+    $online->lastvisit = time();
+    R::store($online);
   }else{
     // Create
     $online = R::dispense('online');
