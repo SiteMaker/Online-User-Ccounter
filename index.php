@@ -1,4 +1,5 @@
 <?php
+  require "cookies.php";
   require "rb.php";
   R::setup( 'mysql:host=localhost;dbname=ucounter', 'root', '' );
 
@@ -17,6 +18,8 @@
     R::store($online);
   }
 
+  $online_count = R::count('online', "lastvisit > " . (time() - 3600));
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +29,6 @@
   <title>Online Test</title>
 </head>
 <body>
-  Сейчас онлайн: 0
+  Сейчас онлайн: <?php echo $online_count; ?>
 </body>
 </html>
