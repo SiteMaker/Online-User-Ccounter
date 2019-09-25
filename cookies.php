@@ -11,7 +11,7 @@ class CookieManager {
       $domain = $_SERVER['HTTP_HOST'];
     }
     if(!$expire){
-      $expite = TimeManager::timePlus('24day');
+      $expite = time() + (3600 * 24);
     }
     setcookie($key, $value, $expire, $path, $domain, $secure);
     return true;
